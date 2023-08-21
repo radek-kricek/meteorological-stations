@@ -1,4 +1,5 @@
-# meteorological-stations
+# Meteorological Stations of Germany
+
 Analysis of meteorological measurements in Germany. Google Cloud. Python + SQL = SQLAlchemy.
 
 You can directly watch the animation [here](https://radek-kricek.github.io/pages/hexbin_map.html)
