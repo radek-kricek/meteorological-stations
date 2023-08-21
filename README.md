@@ -21,7 +21,7 @@ The data (over 7000 files with almost 7.5 GB in total) was downloaded from the w
 
 ## Main parts of code
 
-One of the coding challenges was to create a single dtaaframe with measurements. I defined a function for this purpose and used it in a loop.
+One of the coding challenges was to create a single data frame with measurements. I defined a function for this purpose and used it in a loop.
 
 ```
 def parse_file(filename):
