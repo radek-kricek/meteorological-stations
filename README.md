@@ -40,7 +40,7 @@ with open('../data/ECA_blend_tg/mean_temperature.csv', mode='w', newline='') as 
             df.to_csv(file, index=False, header=False)   # write into the open CSV file
 ```
 
-Here follows an example of creating a table in the database and uploading data. Use of SQLAlchemy. I create an ampty table with the respective columns and data types, then make a data frame in pandas by reading CSV file and append data using the database engine. Appending data instead of replacing in general prevents a loss of data. Index=False states that the data frame index is not supposed to be a column in the new table.
+Here follows an example of creating a table in the database and uploading data. Use of SQLAlchemy. I create an ampty table with the respective columns and data types, then make a data frame in pandas by reading CSV file and append data using the database engine. Appending data instead of replacing it in general prevents a loss of data. Index=False states that the data frame index is not supposed to be a column in the new table.
 
 ```
 with engine.begin() as conn:
