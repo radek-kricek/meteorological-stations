@@ -19,7 +19,7 @@ The whole code can be found in the 'meteorological_stations.ipynb' notebook.
 
 The data (over 7000 files with almost 7.5 GB in total) was downloaded from the website of the [European Climate Assessment & Dataset](https://www.ecad.eu/dailydata/predefinedseries.php), the 'Daily mean temperature TG' data set.
 
-## Main parts of code
+## Main parts of the code
 
 One of the coding challenges was to create a single data frame with measurements. I defined a function for this purpose and used it in a loop.
 
