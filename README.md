@@ -33,14 +33,14 @@ def parse_file(filename):
     df.pop('q_tg')   # drop column
     return df
 
-wwith open("../data/ECA_blend_tg/mean_temperature.csv", mode="w", newline='') as file:   # open CSV file for writing
+with open("../data/ECA_blend_tg/mean_temperature.csv", mode="w", newline='') as file:   # open CSV file for writing
     for filename in tqdm(os.listdir('../data/ECA_blend_tg')):   # check progress, go through all files in the folder
         if 'TG_STAID' in filename:   # use only relevant measurement files
             df = parse_file(filename)   # apply pre-defined parse function
             df.to_csv(file, index=False, header=False)   # write into the open CSV file
 ```
 
-Follows an example of creating a table in the database and uploading data. Use of SQLAlchemy.
+Here follows an example of creating a table in the database and uploading data. Use of SQLAlchemy.
 
 ```
 with engine.begin() as conn:
