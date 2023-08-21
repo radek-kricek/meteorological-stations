@@ -33,7 +33,7 @@ def parse_file(filename):
     df.pop('q_tg')   # drop column
     return df
 
-with open("../data/ECA_blend_tg/mean_temperature.csv", mode="w", newline='') as file:   # open CSV file for writing
+with open('../data/ECA_blend_tg/mean_temperature.csv', mode='w', newline='') as file:   # open CSV file for writing
     for filename in tqdm(os.listdir('../data/ECA_blend_tg')):   # check progress, go through all files in the folder
         if 'TG_STAID' in filename:   # use only relevant measurement files
             df = parse_file(filename)   # apply pre-defined parse function
@@ -88,7 +88,7 @@ fig_5y = ff.create_hexbin_mapbox(
     color='yearly_temp',
     nx_hexagon=13,   # width of the data in map as number of hexagons
     zoom=4,   # zoom of the map view
-    labels={"color": "<i>t</i><sub>avg</sub> (°C)"},   # labels correct for physicists
+    labels={'color': '<i>t</i><sub>avg</sub> (°C)', 'frame':'year'},   # correct variables
     animation_frame='year',  # animation by year
     title = 'Average temperature in Germany'
 )
@@ -107,7 +107,7 @@ for frame in fig_5y.frames:
                 y=0.95,
                 xanchor='left',
                 yanchor='top',
-                font=dict(size=25, color="white"),
+                font=dict(size=25, color='white'),
                 bgcolor='black',
                 opacity=0.8
             )
