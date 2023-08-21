@@ -40,7 +40,7 @@ with open('../data/ECA_blend_tg/mean_temperature.csv', mode='w', newline='') as 
             df.to_csv(file, index=False, header=False)   # write into the open CSV file
 ```
 
-Here follows an example of creating a table in the database and uploading data. Use of SQLAlchemy.
+Here follows an example of creating a table in the database and uploading data. Use of SQLAlchemy. I create an ampty table with the respective columns and data types, then make a data frame in pandas by reading CSV file and append data using the database engine. Appending data instead of replacing in general prevents a loss of data. Index=False states that the data frame index is not supposed to be a column in the new table.
 
 ```
 with engine.begin() as conn:
@@ -58,7 +58,7 @@ df = pd.read_csv('../data/mean_temperature.csv')
 df.to_sql('mean_temperature', engine, if_exists='append', index=False)   # load data into the created table in database
 ```
 
-Extract relevant information from two tables using SQL JOIN statement. Specify common column by USING() and filter by WHERE.
+Extract relevant information from two tables using SQL JOIN statement. Specify common column by USING() and filter by WHERE. The resulting data are stored inside of a list 'rows' and are saved into a data frame.
 
 ```
 with engine.begin() as conn:
@@ -71,6 +71,8 @@ with engine.begin() as conn:
     ;
     """))
     rows = result.all()
+
+df_germany_5y = pd.DataFrame(rows)
 ```
 
 Plot animated hexagonal map and save it as HTML file.
