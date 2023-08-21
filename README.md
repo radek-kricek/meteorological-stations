@@ -19,7 +19,7 @@ The whole code can be found in the 'meteorological_stations.ipynb' notebook.
 
 The data (over 7000 files with almost 7.5 GB in total) was downloaded from the website of the [European Climate Assessment & Dataset](https://www.ecad.eu/dailydata/predefinedseries.php), the 'Daily mean temperature TG' data set.
 
-## Main parts of code
+## Main parts of the code
 
 One of the coding challenges was to create a single data frame with measurements. I defined a function for this purpose and used it in a loop.
 
@@ -40,7 +40,7 @@ with open('../data/ECA_blend_tg/mean_temperature.csv', mode='w', newline='') as 
             df.to_csv(file, index=False, header=False)   # write into the open CSV file
 ```
 
-Here follows an example of creating a table in the database and uploading data. Use of SQLAlchemy.
+Here follows an example of creating a table in the database and uploading data. Use of SQLAlchemy. I create an ampty table with the respective columns and data types, then make a data frame in pandas by reading CSV file and append data using the database engine. Appending data instead of replacing it in general prevents a loss of data. Index=False states that the data frame index is not supposed to be a column in the new table.
 
 ```
 with engine.begin() as conn:
@@ -58,7 +58,7 @@ df = pd.read_csv('../data/mean_temperature.csv')
 df.to_sql('mean_temperature', engine, if_exists='append', index=False)   # load data into the created table in database
 ```
 
-Extract relevant information from two tables using SQL JOIN statement. Specify common column by USING() and filter by WHERE.
+Extract relevant information from two tables using SQL JOIN statement. Specify common column by USING() and filter by WHERE. The resulting data are stored inside of a list 'rows' and are saved into a data frame.
 
 ```
 with engine.begin() as conn:
@@ -71,6 +71,8 @@ with engine.begin() as conn:
     ;
     """))
     rows = result.all()
+
+df_germany_5y = pd.DataFrame(rows)
 ```
 
 Plot animated hexagonal map and save it as HTML file.
@@ -86,7 +88,7 @@ fig_5y = ff.create_hexbin_mapbox(
     height=650,
     center={'lat': 51.1657, 'lon': 10.4515},   # center of the map view
     color='yearly_temp',
-    nx_hexagon=13,   # width of the data in map as number of hexagons
+    nx_hexagon=13,   # width of the hexagonal area inside of the map expressed as number of hexagons
     zoom=4,   # zoom of the map view
     labels={'color': '<i>t</i><sub>avg</sub> (°C)', 'frame':'year'},   # correct variables
     animation_frame='year',  # animation by year
