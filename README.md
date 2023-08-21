@@ -10,7 +10,7 @@ The whole code can be found in the 'meteorological_stations.ipynb' notebook.
 ## The goal
 
 1. Create a single data frame from a set of meteorological measurements in TXT files.
-2. Create two tables in a database using SQLAlchemy.
+2. Create two tables in a database using SQLAlchemy (measurements + locations of meteorological stations).
 3. Extract relevant information using SQLAlchemy.
 4. Create an interactive animated hexagonal map of temperature in Germany.
 
